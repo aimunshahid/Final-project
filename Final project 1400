@@ -1,0 +1,103 @@
+//Aimun Shahid- it's guessing number game, asking for the user input to guess the number I have in mind/ or code.
+// I used a while loop because repeats asking the user for a number but as well as if they want to play again. 
+//instead of writing it over and over again in the code. THe while loop will that with yes or no condition.So the loop runs as long as the user is type yes(y) but once the user enters no(n), the game finishes.
+//also if they enter a number that's two high it'll print that out and if it's too low it'll print that in a while loop. It helps the program run smoothly without making the user suffer. So in stead it's runs everything for the user except the user will only
+//type y , n, and a number. 
+// 
+
+import java.util.Random;
+import java.util.Scanner;
+public class Main {
+Scanner in= new Scanner(System.in);
+Random rand= new Random();
+
+int lownumber= 1;
+int highnumber= 100;
+
+public void playgame()
+{
+
+int secret = rand.nextInt(highnumber);
+System.out.println(secret);
+
+System.out.println("*******************************************");
+System.out.println("*******************************************");
+System.out.println("Pick a number between " + lownumber + "-" + highnumber);
+
+while (!in.hasNextInt())
+{
+System.out.println("hmmm.., let's see, I think you forgot to enter a number, please enter a number.");
+in.nextLine();
+}
+
+
+int input = in.nextInt();
+
+//checking valid number
+while (input <= lownumber && input >= highnumber)
+{
+if (input > highnumber)
+{
+System.out.println("Please enter a number less than " + highnumber);
+}
+else if ( input < lownumber)
+{
+System.out.println("Please enter a number higher than " + lownumber);
+}
+in.nextInt();
+}
+if (secret > input)
+{
+System.out.println("Hmmm.. Nope, the number I am thinking of is higher");
+
+}
+else if ( secret<input)
+{
+System.out.println("Hmm.. I am thinking of a lower number.");
+}
+
+
+System.out.println("*******************************************");
+System.out.println("*******************************************");
+}
+
+public static void main(String[] args)
+{
+Main main = new Main();
+Scanner play = new Scanner(System.in);
+
+boolean running = true;
+
+while (running)
+{
+	System.out.println("                   HELLO!!");
+	
+	System.out.println("               Welcome, Welcome!");
+	
+System.out.println("      Would you play a number guessing game? Y or N ?");
+
+String answer = play.nextLine();
+while(!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n"))
+{
+System.out.println("Invalid entry");
+answer = play.nextLine();
+}
+
+if (answer.equalsIgnoreCase("y"))
+{
+main.playgame();
+} else if (answer.equalsIgnoreCase("n"))
+{
+
+System.out.println("Ok, bye bye... see you again.");
+}
+
+
+
+
+}
+
+
+}
+
+}
